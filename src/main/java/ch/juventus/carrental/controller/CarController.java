@@ -20,5 +20,4 @@ public class CarController {
         String response = carService.getHelloWorldGreeting();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
 }

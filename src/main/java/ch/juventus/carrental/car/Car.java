@@ -8,10 +8,10 @@ public class Car {
 
     private final long id;
     private final String name;
-    private  final  CarType carType;
+    private final  CarType carType;
     private final GearShift gearShift;
     private final int seats;
-    private  final  double pricePerDay;
+    private final  double pricePerDay;
     private final boolean airCondition;
     private final List<RentInformation> rentInformation;
 

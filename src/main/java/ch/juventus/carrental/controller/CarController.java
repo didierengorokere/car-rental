@@ -39,8 +39,22 @@ public class CarController {
         return new ResponseEntity<>(didUpdate, HttpStatus.OK)
     }
 
+    @DeleteMapping("/api/v1/car/{id}")
+    @CrossOrigin (origins = FRONTEND_ENDPOINT)
+    @SuppressWarnings("unused")
+    public ResponseEntity<Boolean> deleteCar(@PathVariable long id) throws IOException{
+        logger.info("Delete car with id '{}'", id);
+        boolean didDelete = carService.deleteCar(id);
+        return new ResponseEntity<>(didDelete, HttpStatus.OK);
+    }
 
-
-
+    @PutMapping ("/api/v1/car/{id}/rent")
+    @CrossOrigin (origins = FRONTEND_ENDPOINT)
+    @SuppressWarnings("unused")
+    public  ResponseEntity<Long> rentCar(@PathVariable Long id, @RequestBody RentInformation rentInformation) throws IOException{
+        logger.info("Renting car with id {} form {} to {}", id rentInformation.getStartDate(), rentInformation.getEndDate());
+        carService.rentCar(id,rentInformation);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 
 }

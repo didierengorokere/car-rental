@@ -2,9 +2,10 @@ package ch.juventus.carrental.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ch.juventus.carrental.service.CarService;
+
+import java.io.IOException;
 
 @RestController
 public class CarController {
@@ -20,4 +21,27 @@ public class CarController {
         String response = carService.getHelloWorldGreeting();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @PostMapping("/api/v1/car")
+    @CrossOrigin(origins = FRONTEND_ENDPOINT)
+    @SuppressWarnings("unused")
+    public ResponseEntity<Boolean> addCar(@RequestBody Car car) throws IOException{
+        logger.info("Adding new car with name '{}'",car.getName());
+        Long newId = carService.addCar(car);
+        return new ResponseEntity<>(newId,HttpStatus.OK);
+    }
+
+    @PutMapping("/api/v1/car/{id}")
+    @CrossOrigin(origins = FRONTEND_ENDPOINT)
+    @SuppressWarnings("unused")
+    public ResponseEntity<Boolean> updateCar(@PathVariable Long id, @RequestBody car updatedCar) throws IOException{
+        logger.info("Update car with new id '{}'",id);
+        boolean didUpdate = carService.updateCar(updatedCar);
+        return new ResponseEntity<>(didUpdate, HttpStatus.OK)
+    }
+
+    @
+
+
+
+
 }

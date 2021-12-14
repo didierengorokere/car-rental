@@ -1,55 +1,31 @@
 package ch.juventus.carrental.car;
+//Linda meint das wäre nicht nötig weil, alle Buchstaben im Front End sind Grossbuchstaben.
 
-public enum CarType {
+/*
+public enum Type {
     CABRIO {
         @Override
-        public String toString() {
-            return "cabrio";
-        }
-    };
+        public String toString() {return "cabrio";}};
 
     LIMOUSINE {
-        @Override
-        public String toString () {
-            return "limousine";
-        }
-    }
-
-    ;
+        @Override public String toString () {return "limousine";}};
 
     SUV {
         @Override
-        public String toString () {
-            return "suv";
-        }
-    }
-
-    ;
+        public String toString () {return "suv";}};
 
     MINIBUS {
-        @Override
-        public String toString () {
-            return "minibus";
-        }
-    }
-
-    ;
+        @Override public String toString () {return "minibus";}};
 
     COUPE {
         @Override
-        public String toString () {
-            return "coupe";
-        }
-    }
-
-    ;
+        public String toString () {return "coupe";}};
 
     ESTATE {
         @Override
-        public String toString () {
-            return "estate";
-        }
-    }
-
-    ;
+        public String toString () {return "estate";}};
 }
+
+
+ */
+

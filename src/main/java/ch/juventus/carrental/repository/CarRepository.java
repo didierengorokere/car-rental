@@ -1,6 +1,6 @@
 package ch.juventus.carrental.repository;
 
-import ch.juventus.carrental.model.CarResponse;
+import ch.juventus.carrental.model.Car;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +10,9 @@ public class CarRepository {
 
 
 
-    public List<CarResponse> findAll(String name){
-        List<CarResponse> cars = Arrays.asList(
-                new CarResponse(
+    public List<Car> findAll(String name){
+        List<Car> cars = Arrays.asList(
+                new Car(
                         1,
                         "Seat",
                         null,
@@ -22,17 +22,17 @@ public class CarRepository {
                         true,
                         Arrays.asList("Ferienauto")
                 ),
-                new CarResponse(
+                new Car(
                         1,
                         "BMW",
-                        CarResponse.Type.CABRIO,
+                        Car.Type.CABRIO,
                         null,
                         4,
                         150,
                         true,
                         Arrays.asList("Sportwagen")
                 ),
-                new CarResponse(
+                new Car(
                         1,
                         "Mercedes",
                         null,
@@ -48,9 +48,9 @@ public class CarRepository {
 
         else{
             name = name.toLowerCase();
-            List<CarResponse> filtered = new ArrayList<>();
+            List<Car> filtered = new ArrayList<>();
 
-            for (CarResponse p: cars){
+            for (Car p: cars){
                 if (p.getName().contains(name))
                     filtered.add(p);
             }

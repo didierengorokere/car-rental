@@ -3,6 +3,7 @@ package ch.juventus.carrental.car;
 
 /*
 public enum Type {
+
     CABRIO {
         @Override
         public String toString() {return "cabrio";}};

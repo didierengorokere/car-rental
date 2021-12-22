@@ -1,11 +1,11 @@
 package ch.juventus.carrental.model;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
-public class CarResponse{
+//This class define our cars.
+public class Car {
 
+    //Define car type
     public enum Type{
         CABRIO,
         LIMOUSINE,
@@ -15,12 +15,13 @@ public class CarResponse{
         ESTATE
     }
 
-
+    //Define gear type
     public enum GearShift{
         MANUAL,
         AUTOMATIC
     }
 
+    //Define a car specification
     private final long id;
     private final String name;
     private final Type type;
@@ -30,7 +31,8 @@ public class CarResponse{
     private final boolean airCondition;
     private List<String> rentInformation;
 
-    public CarResponse(
+    //Car parameter for json and constructor for car specification
+    public Car(
             @JsonProperty("id") long id,
             @JsonProperty(value = "name", required = true) String name,
             @JsonProperty(value = "type", required = true) Type type,
@@ -51,6 +53,7 @@ public class CarResponse{
 
     }
 
+    //Getter for car specification
     public long getId() {
         return id;
     }

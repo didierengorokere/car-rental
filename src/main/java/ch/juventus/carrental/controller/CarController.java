@@ -1,60 +1,106 @@
 package ch.juventus.carrental.controller;
-import ch.juventus.carrental.model.CarResponse;
-import ch.juventus.carrental.repository.CarRepository;
+
+import ch.juventus.carrental.service.CarService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
+// Don't need it because we write it down on all Mapping separately
+@RequestMapping(value = "/api/v1/")
 public class CarController {
+
+   // final Logger logger = LoggerFactory.getLogger(CarController.class);
+
+    private Map<Integer, String> cars = new HashMap<Integer, String>();
+
     private static final String FRONTEND_ENDPOINT = "http://localhost:4200";
-    final Logger logger = LoggerFactory.getLogger(CarController.class);
+    private final CarService carService;
+    public CarController(CarService carService) {this.carService = carService;}
 
 
-
-    @GetMapping ("/api/v1/cars")
+    // List of all cars GEMACHT
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public String car(){
-        //logger.info("Adding new car with name '{}'", CarResponse.getName());
-        return "brum";
+    @GetMapping("cars")
+    public ResponseEntity<String> allCars() throws IOException {
+        String response = carService.getAllCars();
+        System.out.println("show all cars");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping ("/api/v1/car/{id}")
+    //Add Car
+    // GEMACHT
+    @PostMapping ("car/")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public String carID(){
-        return "carID";
+    public void addCar(@RequestBody String car) throws IOException{
+    carService.postCarToDB(car);
+    System.out.println("add this car: " + car);
     }
 
-    @PostMapping ("/api/v1/car")
+    //Edit Car
+    //GEMACHT
+    @PutMapping ("car/{id}")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public String addCar(){
-        return "add Car";
+    public void editCar(@RequestBody String car, @PathVariable Integer id) throws IOException{
+        carService.editCar(car, id);
+        System.out.println("edit car with id: " + id + car);
     }
 
-    @PutMapping (" /api/v1/car/{id}")
+    //Delete Car
+    //GEMACHT
+    @DeleteMapping ("car/{id}")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public  String editCar(){
-        return  "Editor Car";
+    public void deleteCar(@PathVariable Integer id) throws IOException {
+        carService.deleteCar(id);
+        System.out.println ("delete car with id: " + id);
     }
 
-    @DeleteMapping ("/api/v1/car/{id}")
+    //Find car by ID
+    //GEMACHT
+    @GetMapping ("car/{id}")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public String deleteCar(){
-        return "Car deleted";
+    public ResponseEntity<String> findCarID(@PathVariable int id) throws IOException{
+    String response = carService.getCarById(id);
+    System.out.println("show car with id: " + id);
+    return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    CarRepository carRepository= new CarRepository();
-
-    @GetMapping("/cars")
+    //Find cars with filter
+    //The list of suitable cars should be sorted in ascending order by price
+    //GEMACHT
+    @GetMapping ("cars?filter={...}")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public List<CarResponse> getAllCars(
-            @RequestParam(required = false) String name
-    ){
-        return carRepository.findAll(name);
+    public String filterCars(String filter){
 
+        return "filter Cars = " + filter;
     }
+
+
+
+
+    //Rent a Car
+    //PostMapping is also an option
+    //GEMACHT
+    @PostMapping ("car/{id}/rentings")
+    @CrossOrigin(origins = FRONTEND_ENDPOINT)
+    public String rentCar(@PathVariable int id) {
+        return "rent Car with id = " + id;
+    }
+
+
+    //ab hier alles nur ein Test
+
+
+
+
+
+
+
+
 
 
 

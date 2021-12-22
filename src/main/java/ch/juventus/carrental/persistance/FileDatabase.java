@@ -18,7 +18,7 @@ import java.util.TreeSet;
 @Repository
 public class FileDatabase implements Database {
 
-    private String databasePath = "src/main/java/juventus/carrental/persistance/cars.json";
+    private String databasePath = "src/main/java/ch/juventus/carrental/persistance/cars.json";
 
     @Override
     public String loadHelloWorldGreeting() {

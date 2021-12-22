@@ -1,9 +1,9 @@
 package ch.juventus.carrental.controller;
 
-import ch.juventus.carrental.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ch.juventus.carrental.service.CarService;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.Map;
 @RestController
 // @RequestMapping adds at the beginning of the URL the Standard value "/api/v1/"
 @RequestMapping(value = "/api/v1/")
-public class CarController {
+public class CarController{
 
    // final Logger logger = LoggerFactory.getLogger(CarController.class);
 
@@ -83,7 +83,6 @@ public class CarController {
 
 
     //Rent a Car
-    //PostMapping is also an option
     //GEMACHT
     @PostMapping ("car/{id}/rentings")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)

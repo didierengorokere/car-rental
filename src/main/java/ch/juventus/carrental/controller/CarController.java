@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-// Don't need it because we write it down on all Mapping separately
+// @RequestMapping adds at the beginning of the URL the Standard value "/api/v1/"
 @RequestMapping(value = "/api/v1/")
 public class CarController {
 

@@ -11,9 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Repository
 public class FileDatabase implements Database {
@@ -29,6 +27,7 @@ public class FileDatabase implements Database {
     public String dbAsString() throws IOException{
         File file = new File(databasePath);
         String dbAsString = new String(Files.readAllBytes(Paths.get(file.toURI())));
+
         return dbAsString;
     }
 

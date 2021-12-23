@@ -8,9 +8,6 @@ public interface Database {
     String dbAsString() throws IOException;
 
 
-/*
-    void saveCar () throws IOException;
-    String loadCars() throws IOException;
- */
+
 
 }

@@ -16,13 +16,12 @@ public class CarService {
         this.fileDataBase = fileDataBase;
     }
 
-/* This one seems irrelevant to me
+// This one seems irrelevant to me
 
     public String getHelloWorldGreeting() {
         return fileDataBase.loadHelloWorldGreeting();
     }
 
- */
 
     public String getAllCars() throws IOException { return fileDataBase.dbAsString();}
 
@@ -30,7 +29,9 @@ public class CarService {
     public void postCarToDB(String carString) throws IOException {
         List<Car> cars = fileDataBase.dbAsObject();
         Car newCar = fileDataBase.jsonStringToObjact(carString);
+
         //newCar.setId(fileDataBase.idHeandler());
+
         cars.add(fileDataBase.jsonStringToObjact(carString));
         fileDataBase.saveArrayAsDB(cars);
     }

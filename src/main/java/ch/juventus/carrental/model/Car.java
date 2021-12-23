@@ -5,31 +5,16 @@ import java.util.List;
 //This class define our cars.
 public class Car {
 
-    //Define car type
-    public enum Type{
-        CABRIO,
-        LIMOUSINE,
-        SUV,
-        MINIBUS,
-        COUPE,
-        ESTATE
-    }
-
-    //Define gear type
-    public enum GearShift{
-        MANUAL,
-        AUTOMATIC
-    }
-
     //Define a car specification
-    private final long id;
+    private long id;
     private final String name;
     private final Type type;
     private final GearShift gearShift;
     private final int seats;
     private final double pricePerDay;
     private final boolean airCondition;
-    private List<String> rentInformation;
+    private final List<String> rentInformation;
+
 
     //Car parameter for json and constructor for car specification
     public Car(
@@ -53,10 +38,28 @@ public class Car {
 
     }
 
+
+    //Define car type
+    public enum Type{
+        CABRIO,
+        LIMOUSINE,
+        SUV,
+        MINIBUS,
+        COUPE,
+        ESTATE
+    }
+
+    //Define gear type
+    public enum GearShift{
+        MANUAL,
+        AUTOMATIC
+    }
+
     //Getter for car specification
     public long getId() {
         return id;
     }
+    public void setId(long newId) {id = newId;}
 
     public String getName() {
         return name;

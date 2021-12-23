@@ -14,7 +14,7 @@ import java.util.Map;
 @RequestMapping(value = "/api/v1/")
 public class CarController{
 
-   // final Logger logger = LoggerFactory.getLogger(CarController.class);
+    // final Logger logger = LoggerFactory.getLogger(CarController.class);
 
     private Map<Integer, String> cars = new HashMap<Integer, String>();
 
@@ -37,10 +37,20 @@ public class CarController{
     @PostMapping ("car/")
     @CrossOrigin(origins = FRONTEND_ENDPOINT)
     public void addCar(@RequestBody String car) throws IOException{
-    carService.postCarToDB(car);
-    System.out.println("add this car: " + car);
+        carService.postCarToDB(car);
+        System.out.println("add this car: " + car);
     }
 
+    //Delete Car
+    //GEMACHT
+    @CrossOrigin(origins = FRONTEND_ENDPOINT)
+    @DeleteMapping ("car/{id}")
+    public void deleteCar(@PathVariable Integer id) throws IOException {
+        carService.deleteCar(id);
+        System.out.println ("delete car with id: " + id);
+    }
+
+/*
     //Edit Car
     //GEMACHT
     @PutMapping ("car/{id}")
@@ -50,14 +60,7 @@ public class CarController{
         System.out.println("edit car with id: " + id + car);
     }
 
-    //Delete Car
-    //GEMACHT
-    @DeleteMapping ("car/{id}")
-    @CrossOrigin(origins = FRONTEND_ENDPOINT)
-    public void deleteCar(@PathVariable Integer id) throws IOException {
-        carService.deleteCar(id);
-        System.out.println ("delete car with id: " + id);
-    }
+
 
     //Find car by ID
     //GEMACHT
@@ -96,6 +99,8 @@ public class CarController{
 
 
 
+
+ */
 
 
 
